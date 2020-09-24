@@ -1,0 +1,10 @@
+<h1>書籍一覧</h1>
+<% @book.each do |book| %>
+<div>
+  <ul>
+    <li><%= book.title %></li>
+    <li><%= book.author %></li>
+    <li><%= book.label %></li>
+  </ul>
+</div>
+<% end %>
