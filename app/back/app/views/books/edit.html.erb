@@ -1,16 +1,21 @@
-<h1>書籍登録の編集</h1>
-<div>
-  <div>
-    <div>
-      <div>
-        <p>書籍名</p>
-        <input value="<%=@book.title%>">
-        <p>著者名</p>
-        <input value="<%=@book.author%>">
-        <p>ラベル</p>
-        <input  value="<%=@book.label%>">
-        <input type="submit" value="保存">
-      </div>
-    </div>
+<h1>書籍の新規登録</h1>
+<%= form_with model: @book do |form| %>
+   <div>
+    <%= form.label :title, "書籍名" %>
+    <%= form.text_field :title, value: @book.title %>
   </div>
-</div>
+
+  <div>
+    <%= form.label :author, "著者名" %>
+    <%= form.text_field :author, value: @book.author %>
+  </div>
+
+  <div>
+    <%= form.label :label, "ラベル" %>
+    <%= form.text_field :label, value: @book.label %>
+  </div>
+
+  <div>
+    <%= form.submit "書籍を登録する" %>
+  </div>
+<% end %>
