@@ -1,5 +1,14 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+
+  def search
+      if params[:content].present?
+        @book = Book.where(user_id: current_user.id).where('title LIKE ? OR author LIKE ? OR label LIKE ?',"%#{params[:content]}%", "%#{params[:content]}%", "%#{params[:content]}%")
+      else
+        @book = Book.none
+      end
+  end
+
   def index
     @book = Book.where(user_id: current_user.id)
   end
