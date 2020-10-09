@@ -41,6 +41,19 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    @book = Book.find(params[:id])
+    if current_user.id == @book.user_id
+      if Book.destroy(@book.id)
+        redirect_to "/books"
+      else
+        redirect_to "/books/#{@book.id}/edit"
+      end
+    else
+      redirect_to "/"
+    end
+  end
+
   private
     def book_params
       params.require(:book).permit(:title, :author, :label)

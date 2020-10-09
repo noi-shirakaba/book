@@ -16,6 +16,10 @@
   </div>
 
   <div>
-    <%= form.submit "書籍を登録する" %>
+    <%= form.submit "変更内容を更新する" %>
+  </div>
+
+  <div>
+    <%= link_to '削除', "/books/#{@book.id}", method: :delete %>
   </div>
 <% end %>
